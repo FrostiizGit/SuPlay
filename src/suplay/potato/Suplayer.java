@@ -7,6 +7,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
@@ -59,6 +60,8 @@ public class Suplayer {
 		frame = new JFrame();
 		frame.getContentPane().setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		frame.setTitle("Potato Music Player");
+		
+		frame.setIconImage(new ImageIcon("pepewut.png").getImage());;
 		frame.setBackground(Color.DARK_GRAY);
 		
 		frame.setBounds(100, 100, Suplayer.w, Suplayer.h);
