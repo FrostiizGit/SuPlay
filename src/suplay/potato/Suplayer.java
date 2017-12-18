@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class Suplayer {
  /*
@@ -23,6 +24,7 @@ public class Suplayer {
   */
 	protected static int w = 1280;
 	protected static int h = 720;
+	private ArrayList<String> songList = new ArrayList<String>();
 	private JFrame frame;
 
 	/**
@@ -56,6 +58,7 @@ public class Suplayer {
 		
 		frame = new JFrame();
 		frame.getContentPane().setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		frame.setTitle("Potato Music Player");
 		frame.setBackground(Color.DARK_GRAY);
 		
 		frame.setBounds(100, 100, Suplayer.w, Suplayer.h);
@@ -88,6 +91,9 @@ public class Suplayer {
 				 if (returnVal == JFileChooser.APPROVE_OPTION) {
 	               java.io.File file = fc.getSelectedFile();
 	               System.out.println("File Selected :" + file.getName());
+	               
+	               songList.add(file.getAbsolutePath());
+	               System.out.println(songList);
 	            } else {
 	            	System.out.println("Open command cancelled by user." );           
 	            }      
