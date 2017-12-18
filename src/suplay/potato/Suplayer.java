@@ -7,6 +7,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.print.attribute.standard.Media;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -14,6 +15,8 @@ import javax.swing.JFileChooser;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Suplayer {
@@ -56,6 +59,8 @@ public class Suplayer {
 	private void initialize() {
 		Color vPink = new Color(240, 29, 100);
 		Color vDarkPink = new Color(196, 33, 82);
+		Color vWhite = new Color(255, 255, 255);
+		Color vMint = new Color(173, 20, 87);
 		
 		frame = new JFrame();
 		frame.getContentPane().setFont(new Font("Segoe UI", Font.PLAIN, 14));
