@@ -8,6 +8,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.print.attribute.standard.Media;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -99,9 +102,31 @@ public class Suplayer {
 				 if (returnVal == JFileChooser.APPROVE_OPTION) {
 	               java.io.File file = fc.getSelectedFile();
 	               System.out.println("File Selected :" + file.getName());
-	               
-	               songList.add(file.getAbsolutePath());
-	               System.out.println(songList);
+	               String fName = file.getName();
+	               String fExt =  fName.substring(fName.lastIndexOf("."));
+	               System.out.println(fExt);
+	               if(fExt.equals(".wav")) {
+	            	   songList.add(file.getAbsolutePath());
+		               System.out.println(songList);
+		               new Thread(new Runnable() {
+		            	   // The wrapper thread is unnecessary, unless it blocks on the
+		            	   // Clip finishing; see comments.
+		            	     public void run() {
+		            	       try {
+		            	         Clip clip = AudioSystem.getClip();
+		            	         AudioInputStream inputStream = AudioSystem.getAudioInputStream(file.getAbsoluteFile());
+		            	         clip.open(inputStream);
+		            	         clip.start(); 
+		            	       } catch (Exception e) {
+		            	         System.err.println(e.getMessage());
+		            	       }
+		            	     }
+		            	   }).start();
+	               } else if (fExt.equals(".mp3")) {
+	            	   System.out.println("mp3");
+	               } else {
+	            	   System.out.println("Format non valid");
+	               }
 	            } else {
 	            	System.out.println("Open command cancelled by user." );           
 	            }      
