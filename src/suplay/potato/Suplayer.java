@@ -8,6 +8,8 @@ import java.awt.event.ComponentEvent;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -79,6 +81,17 @@ public class Suplayer {
 			public void mouseExited(MouseEvent e) {
 				btnFile.setBackground(vPink);
 			}
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				final JFileChooser fc = new JFileChooser();
+				int returnVal = fc.showOpenDialog(frame);
+				 if (returnVal == JFileChooser.APPROVE_OPTION) {
+	               java.io.File file = fc.getSelectedFile();
+	               System.out.println("File Selected :" + file.getName());
+	            } else {
+	            	System.out.println("Open command cancelled by user." );           
+	            }      
+			}
 		});
 		btnFile.setBorderPainted(false);
 		btnFile.setBounds(0, 0, (Suplayer.w / 4), menuPanel.getHeight());
@@ -135,6 +148,11 @@ public class Suplayer {
 		btnHelp.setBounds(3 * (Suplayer.w / 4), 0, (Suplayer.w / 4), menuPanel.getHeight());
 		btnHelp.setBackground(vPink);
 		menuPanel.add(btnHelp);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 660, (Suplayer.h - 40), 40);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 		
 		// ########################## RESIZE EVENT ##########################
 		frame.addComponentListener(new ComponentAdapter() {
