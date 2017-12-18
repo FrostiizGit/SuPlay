@@ -7,10 +7,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.Color;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -62,6 +60,7 @@ public class Suplayer {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		// ########################## MENU PANEL ##########################
 		JPanel menuPanel = new JPanel();
 		menuPanel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		menuPanel.setBounds(0, 0, Suplayer.w, 40);
@@ -69,6 +68,7 @@ public class Suplayer {
 		menuPanel.setLayout(null);
 		menuPanel.setBackground(vPink);
 		
+		// ########################## FILE BUTTON ##########################
 		JButton btnFile = new JButton("File");
 		btnFile.addMouseListener(new MouseAdapter() {
 			@Override
@@ -85,6 +85,7 @@ public class Suplayer {
 		btnFile.setBackground(vPink);
 		menuPanel.add(btnFile);
 		
+		// ########################## EDIT BUTTON ##########################
 		JButton btnEdit = new JButton("Edit");
 		btnEdit.addMouseListener(new MouseAdapter() {
 			@Override
@@ -101,6 +102,7 @@ public class Suplayer {
 		btnEdit.setBackground(vPink);
 		menuPanel.add(btnEdit);
 		
+		// ########################## VIEW BUTTON ##########################
 		JButton btnView = new JButton("View");
 		btnView.addMouseListener(new MouseAdapter() {
 			@Override
@@ -117,6 +119,7 @@ public class Suplayer {
 		btnView.setBackground(vPink);
 		menuPanel.add(btnView);
 		
+		// ########################## HELP BUTTON ##########################
 		JButton btnHelp = new JButton("Help");
 		btnHelp.addMouseListener(new MouseAdapter() {
 			@Override
@@ -133,7 +136,7 @@ public class Suplayer {
 		btnHelp.setBackground(vPink);
 		menuPanel.add(btnHelp);
 		
-		//Event that is used to update component size to support window resizing
+		// ########################## RESIZE EVENT ##########################
 		frame.addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent arg0) {
