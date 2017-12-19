@@ -7,10 +7,6 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.Color;
 import javax.swing.JPanel;
-import javax.print.attribute.standard.Media;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -18,8 +14,6 @@ import javax.swing.JFileChooser;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Suplayer {
@@ -62,8 +56,8 @@ public class Suplayer {
 	private void initialize() {
 		Color vPink = new Color(240, 29, 100);
 		Color vDarkPink = new Color(196, 33, 82);
-		Color vWhite = new Color(255, 255, 255);
-		Color vMint = new Color(173, 20, 87);
+		//Color vWhite = new Color(255, 255, 255);
+		//Color vMint = new Color(173, 20, 87);
 		
 		frame = new JFrame();
 		frame.getContentPane().setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -108,20 +102,7 @@ public class Suplayer {
 	               if(fExt.equals(".wav")) {
 	            	   songList.add(file.getAbsolutePath());
 		               System.out.println(songList);
-		               new Thread(new Runnable() {
-		            	   // The wrapper thread is unnecessary, unless it blocks on the
-		            	   // Clip finishing; see comments.
-		            	     public void run() {
-		            	       try {
-		            	         Clip clip = AudioSystem.getClip();
-		            	         AudioInputStream inputStream = AudioSystem.getAudioInputStream(file.getAbsoluteFile());
-		            	         clip.open(inputStream);
-		            	         clip.start(); 
-		            	       } catch (Exception e) {
-		            	         System.err.println(e.getMessage());
-		            	       }
-		            	     }
-		            	   }).start();
+		               WavManager.playWav(file);
 	               } else if (fExt.equals(".mp3")) {
 	            	   System.out.println("mp3");
 	               } else {
